@@ -1,0 +1,171 @@
+%flex-row { display: flex; flex-direction: row; }
+%flex-column { display: flex; flex-direction: column; }
+%center { display: flex; align-items: center; }
+
+$layout-breakpoint-mobile: 628px;
+
+.canvas-content {
+    position: fixed;
+    z-index: 3;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+}
+
+* {font-family: "Bricolage Grotesque", sans-serif;}
+
+p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 200;
+    color: white;
+}
+
+h1 {
+    font-size: 8vw;
+    position: absolute;
+    // top: calc(100vh - 50vw);
+    font-weight: 800;
+    left: 20px;
+    line-height: 1;
+    letter-spacing: -5px;
+    color: white;
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 1;
+    color: white;
+}
+
+h3 {
+    font-size: 40px;
+    font-weight: 100;
+    color: white;
+    margin: 1.5rem;
+}
+
+button {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 200;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px 0;
+    cursor: pointer;
+    color: white;
+    transition: all 300ms;
+
+    &:hover {
+        border-color: white !important;
+        transition: all 300ms;
+    }
+}
+
+#canvas3d {
+    // transform: scale(.5);
+    // border: 1px solid yellow;
+}
+
+#hero {
+    @extend %flex-row;
+    
+    height: 100dvh;
+}
+
+@media (max-width: $layout-breakpoint-mobile) {
+    h3 {font-size: 20px;}
+    h2 {font-size: 26px;}
+
+    #hero {
+        align-items: end;
+        // text-align: center;
+
+        h1 {
+            width: 100%;
+            letter-spacing: 1px;
+            text-align: justify;
+        }
+    }
+
+    #part1, #part2 {
+        position:relative;
+        z-index: 4;
+        justify-content: flex-end;
+       
+        div {
+            width: 100% !important;
+            margin-top: auto;
+            gap: 2rem !important;
+            
+            h2 {
+                z-index: 0 !important;
+            }
+        }
+    }
+
+    .spline, .angular {
+        background-size: 150% !important;
+    }
+}
+
+#part1, #part2 {
+    @extend %flex-row;
+
+    width: 100%;
+    height: 100vh;
+
+    align-items: center;
+    justify-content: flex-end;
+    
+    div {
+        @extend %flex-column;
+        
+        width: 30%;
+        gap: 5rem;
+        padding: 1%;
+    }
+}
+
+#part2 {justify-content: flex-start !important;}
+#part3 {
+    @extend %flex-row;
+
+    justify-content: center !important;
+    align-items: end;
+
+    width: 100%;
+    height: 100dvh;
+
+    h3 {margin: .5rem;}
+
+    .spline {
+        background: url('https://asset.brandfetch.io/idZ_aiFAYa/idFRIv-XdR.jpeg');
+        background-position: center center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .angular {
+        // color: #DD0031;
+        background: linear-gradient(90deg, rgba(221,0,49,1) 0%, rgba(195,0,47,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .icons {
+        @extend %flex-row;
+
+        justify-content: center;
+        gap: 10px;
+
+        a {
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
